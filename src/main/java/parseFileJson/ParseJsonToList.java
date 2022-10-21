@@ -11,14 +11,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-interface ParseJsonToList<T> {
+abstract class ParseJsonToList<T> {
 
-    default List<T> jsonFileToList(String stringJson) {
+    private List<T> listObj;
+    private String stringJson;
+
+    public ParseJsonToList(String fileJson) {
+        this.stringJson = getStringFromFileJson(fileJson);
+        jsonFileToList();
+    }
+
+    private List<T> jsonFileToList() {
         JSONParser jsonParser = new JSONParser();
-        List<T> listObj = new ArrayList<>();
+        this.listObj = new ArrayList<>();
 
         try {
-            JSONArray jsonArray = (JSONArray) jsonParser.parse(stringJson);
+            JSONArray jsonArray = (JSONArray) jsonParser.parse(this.stringJson);
             for (Object item : jsonArray) {
                 //Java представление в jason строки, наследует hashMap(ключ,значение)
                 JSONObject jsonObject = (JSONObject) item;
@@ -28,12 +36,12 @@ interface ParseJsonToList<T> {
         } catch (ParseException e) {
             System.out.println("Error parse: " + e);
         }
-        return listObj;
+        return this.listObj;
     }
 
-    T parseObj(JSONObject jsonObject);
+    protected abstract T parseObj(JSONObject jsonObject);
 
-    default String getStringFromFileJson(String fileJson) {
+    private String getStringFromFileJson(String fileJson) {
         StringBuilder builder = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileJson))) {
             String line;
@@ -44,5 +52,9 @@ interface ParseJsonToList<T> {
             System.out.println("Error: " + e.toString());
         }
         return builder.toString();
+    }
+
+    public List<T> getList() {
+        return listObj;
     }
 }

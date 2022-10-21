@@ -1,14 +1,16 @@
 [
   {
     "id": 1,
-    "model": "Sumsung UE55AU7100UXCE",
-    "diagonal": 139.0,
-    "price": 54999.0
+    "name": "Sumsung UE55AU7100UXCE",
+    "count": 12,
+    "price": 54999.0,
+    "diagonal": 139.0
   },
   {
     "id": 2,
-    "model": "Sony KD43X81JR",
-    "diagonal": 108.0,
-    "price": 65999.0
+    "name": "Sony KD43X81JR",
+    "count": 3,
+    "price": 65999.0,
+    "diagonal": 108.0
   }
 ]

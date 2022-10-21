@@ -1,14 +1,21 @@
 package parseFileJson;
 
 import categories.HouseAppliancesTV;
+import categories.Products;
 import org.json.simple.JSONObject;
 //Open-Closed Principle
-public class ParseJsonAppliances implements ParseJsonToList<HouseAppliancesTV> {
+public class ParseJsonAppliances extends ParseJsonToList<Products> {
+
+    public ParseJsonAppliances(String stringJson) {
+        super(stringJson);
+    }
+
     @Override
-    public HouseAppliancesTV parseObj(JSONObject jsonObject) {
+    protected HouseAppliancesTV parseObj(JSONObject jsonObject) {
         return new HouseAppliancesTV((long)jsonObject.get("id"),(String) jsonObject.get("model")
         ,(Double) jsonObject.get("diagonal")
-        ,(Double) jsonObject.get("price"));
+        ,(Double) jsonObject.get("price")
+        , (long) jsonObject.get("count"));
     }
 
 }

@@ -1,9 +1,10 @@
-import categories.Categories;
+import categories.FruitsAndVegetables;
 import categories.HouseAppliancesTV;
 import categories.Products;
 import parseFileJson.ParseJsonAppliances;
-import parseFileJson.ParseJsonProducts;
+import parseFileJson.ParseJsonFruits;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -12,22 +13,13 @@ public class Main {
         String jsonAppliancesFile = "data/HouseAppliancesTV.json";
 
         //продукты
-        ParseJsonProducts parseProducts = new ParseJsonProducts();
-        String jsonString = parseProducts.getStringFromFileJson(jsonFruitFile);
-        List<Products> listProduct = parseProducts.jsonFileToList(jsonString);
-        listProduct.forEach(System.out::println);
-
-        System.out.println();
+        ParseJsonFruits parseProducts = new ParseJsonFruits(jsonFruitFile);
+        List<Products> listFuits = parseProducts.getList();
 
         //бытовая техника
-        ParseJsonAppliances parseAppliances = new ParseJsonAppliances();
-        jsonString = parseAppliances.getStringFromFileJson(jsonAppliancesFile);
-        List<HouseAppliancesTV> listAppliances = parseAppliances.jsonFileToList(jsonString);
-        listAppliances.forEach(System.out::println);
+        ParseJsonAppliances parseAppliances = new ParseJsonAppliances(jsonAppliancesFile);
+        List<Products> listAppliances = parseAppliances.getList();
 
-        Categories cat = new Categories();
-        cat.addCategories("Овощи и фрукты",listProduct);
-        cat.addCategories("ТВ",listAppliances);
 
 //todo
 
