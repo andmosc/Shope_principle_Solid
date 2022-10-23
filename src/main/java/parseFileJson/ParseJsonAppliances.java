@@ -1,7 +1,7 @@
 package parseFileJson;
 
 import categories.HouseAppliancesTV;
-import categories.Products;
+import payment.Products;
 import org.json.simple.JSONObject;
 //Open-Closed Principle
 public class ParseJsonAppliances extends ParseJsonToList<Products> {
@@ -12,10 +12,10 @@ public class ParseJsonAppliances extends ParseJsonToList<Products> {
 
     @Override
     protected HouseAppliancesTV parseObj(JSONObject jsonObject) {
-        return new HouseAppliancesTV((long)jsonObject.get("id"),(String) jsonObject.get("model")
-        ,(Double) jsonObject.get("diagonal")
+        return new HouseAppliancesTV((long)jsonObject.get("id"),(String) jsonObject.get("name")
+        ,(Double) jsonObject.get("amount")
         ,(Double) jsonObject.get("price")
-        , (long) jsonObject.get("count"));
+        , (Double) jsonObject.get("diagonal"));
     }
 
 }

@@ -16,10 +16,16 @@ abstract class ParseJsonToList<T> {
     private List<T> listObj;
     private String stringJson;
 
-    public ParseJsonToList(String fileJson) {
+    public List<T> getList() {
+        return listObj;
+    }
+
+    protected ParseJsonToList(String fileJson) {
         this.stringJson = getStringFromFileJson(fileJson);
         jsonFileToList();
     }
+
+    protected abstract T parseObj(JSONObject jsonObject);
 
     private List<T> jsonFileToList() {
         JSONParser jsonParser = new JSONParser();
@@ -39,7 +45,7 @@ abstract class ParseJsonToList<T> {
         return this.listObj;
     }
 
-    protected abstract T parseObj(JSONObject jsonObject);
+
 
     private String getStringFromFileJson(String fileJson) {
         StringBuilder builder = new StringBuilder();
@@ -54,7 +60,5 @@ abstract class ParseJsonToList<T> {
         return builder.toString();
     }
 
-    public List<T> getList() {
-        return listObj;
-    }
+
 }

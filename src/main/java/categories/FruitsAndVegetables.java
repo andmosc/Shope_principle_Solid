@@ -1,17 +1,21 @@
 package categories;
 
-public class FruitsAndVegetables extends Products implements ICategories{
+import payment.Products;
+
+public class FruitsAndVegetables extends Products implements IShowInfo {
     private double weight;
 
-    public FruitsAndVegetables(long id, String name, double count, double price, double weight) {
-        super(id, name, count, price);
+    public FruitsAndVegetables(long id, String name, double amount, double price, double weight) {
+        super(id, name, amount, price);
         this.weight = weight;
     }
 
     @Override
-    public String toString() {
-        return "FruitsAndVegetables{" +
-                "weight=" + weight +
-                '}';
+    public void showInfo() {
+        System.out.println(super.getName()
+                +"\nЦена: "
+                + super.getPrice()
+                + "\nВес: "
+                + weight);
     }
 }

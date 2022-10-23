@@ -2,21 +2,21 @@
   {
     "id": 1,
     "name": "Перец красный",
-    "count": 50.0,
+    "amount": 50.0,
     "price": 189.99,
     "weight": 1.0
   },
   {
     "id": 2,
     "name": "Огурцы",
-    "count": 24.0,
+    "amount": 24.0,
     "price": 89.99,
     "weight": 0.450
   },
   {
     "id": 3,
     "name": "Киви новый урожай",
-    "count": 15.0,
+    "amount": 4.0,
     "price": 139.99,
     "weight": 1.0
   }
