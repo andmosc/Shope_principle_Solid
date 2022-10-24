@@ -16,6 +16,9 @@ abstract class ParseJsonToList<T> {
     private List<T> listObj;
     private String stringJson;
 
+    //Open-Closed Principle
+    protected abstract T parseObj(JSONObject jsonObject);
+
     public List<T> getList() {
         return listObj;
     }
@@ -25,8 +28,6 @@ abstract class ParseJsonToList<T> {
         jsonFileToList();
     }
 
-    protected abstract T parseObj(JSONObject jsonObject);
-
     private List<T> jsonFileToList() {
         JSONParser jsonParser = new JSONParser();
         this.listObj = new ArrayList<>();
@@ -34,9 +35,7 @@ abstract class ParseJsonToList<T> {
         try {
             JSONArray jsonArray = (JSONArray) jsonParser.parse(this.stringJson);
             for (Object item : jsonArray) {
-                //Java представление в jason строки, наследует hashMap(ключ,значение)
                 JSONObject jsonObject = (JSONObject) item;
-                //доавляем в список новый созданный объект Empoyee
                 listObj.add(parseObj(jsonObject));
             }
         } catch (ParseException e) {
@@ -44,8 +43,6 @@ abstract class ParseJsonToList<T> {
         }
         return this.listObj;
     }
-
-
 
     private String getStringFromFileJson(String fileJson) {
         StringBuilder builder = new StringBuilder();
@@ -59,6 +56,4 @@ abstract class ParseJsonToList<T> {
         }
         return builder.toString();
     }
-
-
 }

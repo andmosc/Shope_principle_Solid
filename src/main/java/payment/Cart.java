@@ -4,9 +4,8 @@ import categories.IShowInfo;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
-
-public class Cart implements IShowInfo, IAvailability,ICart {
+//Single Responsibility Principle
+public class Cart implements IShowInfo, IAvailability {
     private Map<Products, Integer> mapProducts;
 
     private int amount;
@@ -35,7 +34,6 @@ public class Cart implements IShowInfo, IAvailability,ICart {
             amount = 1;
             //todo товара нет в наличии
         }
-
     }
 
     @Override
@@ -46,7 +44,6 @@ public class Cart implements IShowInfo, IAvailability,ICart {
     @Override
     public void showInfo() {
         if (!mapProducts.isEmpty()) {
-            Stream<Map.Entry<Products, Integer>> optionalIsbn = mapProducts.entrySet().stream();
             mapProducts.forEach((p, k) -> {
                 System.out.println(++numIndex);
                 p.showInfo();
@@ -61,9 +58,9 @@ public class Cart implements IShowInfo, IAvailability,ICart {
 
     public boolean clearCart() {
         if (!mapProducts.isEmpty()) {
-        mapProducts = new HashMap<>();
-        numIndex = 0;
-        return true;
+            mapProducts = new HashMap<>();
+            numIndex = 0;
+            return true;
         } else {
             mapProducts.size();
             System.out.println("Корзина пуста");

@@ -4,13 +4,13 @@ import categories.FruitsAndVegetables;
 import payment.Products;
 import org.json.simple.JSONObject;
 
-//Open-Closed Principle
+
 public class ParseJsonFruits extends ParseJsonToList<Products> {
 
     public ParseJsonFruits(String stringJson) {
         super(stringJson);
     }
-
+    //Open-Closed Principle
     @Override
     protected FruitsAndVegetables parseObj(JSONObject jsonObject) {
         return new FruitsAndVegetables((long)jsonObject.get("id"), (String) jsonObject.get("name")

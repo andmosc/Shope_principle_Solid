@@ -2,7 +2,7 @@ package categories;
 
 import payment.Products;
 
-//Single Responsibility Principle
+//Liskov substitution principle
 public class HouseAppliancesTV extends Products implements IShowInfo {
     private double diagonal;
 

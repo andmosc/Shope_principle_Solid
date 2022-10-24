@@ -23,7 +23,7 @@ public class Main {
     };
 
 
-    private static final String VegetblesAndFruit = "Овощи и фрукты";
+    private static final String VegetblesAndFruit = "Овощи и фрукты"; //правила Magic
     private static final String HouseAppliancesTV = "Бытовая техника";
 
     public static void main(String[] args) {
@@ -96,7 +96,7 @@ public class Main {
     private static void printMenu(String[] mainMenu) {
         Arrays.stream(mainMenu).forEachOrdered(System.out::println);
     }
-
+//DRY
     private static int correctInput(Scanner scanner, int sizeMenu) {
         boolean correct = false;
         int choiceInt = 0;

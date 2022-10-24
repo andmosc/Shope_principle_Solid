@@ -1,10 +1,10 @@
 package payment;
 
-public class PayCart  {
+//Single Responsibility Principle
+public class PayCart {
 
     public boolean productsPay(Cart cart) {
-
-        if(!cart.getMapProducts().isEmpty()) {
+        if (!cart.getMapProducts().isEmpty()) {
             cart.getMapProducts().forEach((product, amount) -> {
                 double count = (product.getCount() - amount);
                 product.setCount(count);

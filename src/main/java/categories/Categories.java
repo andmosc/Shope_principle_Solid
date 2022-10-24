@@ -3,7 +3,7 @@ import payment.Products;
 
 import java.util.List;
 
-
+//Single Responsibility Principle
 public class Categories {
     private final String categoryName;
     private final List<Products> products;
